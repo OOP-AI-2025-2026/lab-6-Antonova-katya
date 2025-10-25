@@ -36,17 +36,16 @@ class Car implements Comparable {
         // Якщо роки рівні, переходимо до кроку 3
         // 3. Порівнюємо кінські сили
         if (this.horsePower > other.horsePower) {
-            return 1; // 'this' "більше", бо має більше кінських сил
+            return 1; // 'this' "більше", бо має більшу кінську силу
         }
         if (this.horsePower < other.horsePower) {
             return -1; // 'this' "менше"
         }
 
-        return 0;  // Якщо всі параметри рівні
+        return 0; // Якщо всі параметри рівні
     }
 
-    //  Гетери та сетери
-
+    // Гетери та сетери
     public int getPrice() {
         return price;
     }
@@ -71,4 +70,3 @@ class Car implements Comparable {
         this.horsePower = horsePower;
     }
 }
-
