@@ -115,22 +115,29 @@ public class SortingList extends Application {
         sortByLastNameButton.setMaxWidth(Double.MAX_VALUE);
         sortByMarkButton.setMaxWidth(Double.MAX_VALUE);
 
-        // Обробка натискання кнопки за допомогою об'єкта анонімного класу,
-        // реалізує інтерфейс Comparable
+        // Змінні для збереження напрямку сортування
+        final boolean[] orderByName = {true};
+        final boolean[] orderByLastName = {true};
+        final boolean[] orderByMark = {true};
 
-        final boolean[] order = {true};
-
-        sortByNameButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                students.sort(new NameSorter(order[0]));
-                order[0] = !order[0];
-            }
+        // Сортування за ім'ям
+        sortByNameButton.setOnAction(event -> {
+            students.sort(new NameSorter(orderByName[0]));
+            orderByName[0] = !orderByName[0];
         });
 
-        // TODO: Обробка натискання на кнопку "Сортувати за прізвищем"
+        // Сортування за прізвищем
+        sortByLastNameButton.setOnAction(event -> {
+            students.sort(new LastNameSorter(orderByLastName[0]));
+            orderByLastName[0] = !orderByLastName[0];
+        });
 
-        // TODO: Обробка натискання на кнопку "Сортувати за оцінкою"
+        // Сортування за середнім балом
+        sortByMarkButton.setOnAction(event -> {
+            students.sort(new MarkSorter(orderByMark[0]));
+            orderByMark[0] = !orderByMark[0];
+        });
+
 
         // Створюємо горизонтальний ряд
         HBox hb = new HBox();
